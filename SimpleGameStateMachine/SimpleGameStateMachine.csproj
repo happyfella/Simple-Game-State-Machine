@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{10240F27-2258-4786-8564-ADEA6ECB9BE7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BasicStateMachine</RootNamespace>
-    <AssemblyName>BasicStateMachine</AssemblyName>
+    <RootNamespace>SimpleGameStateMachine</RootNamespace>
+    <AssemblyName>SimpleGameStateMachine</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateMachine\Instances\FailState.cs" />
+    <Compile Include="StateMachine\Instances\MainMenuState.cs" />
     <Compile Include="StateMachine\Instances\PauseState.cs" />
     <Compile Include="StateMachine\Machine.cs" />
     <Compile Include="StateMachine\Enums\States.cs" />

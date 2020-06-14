@@ -124,6 +124,9 @@ namespace SimpleGameStateMachine.StateMachine
                 case States.PAUSE:
                     result = new PauseState();
                     break;
+                case States.MAINMENU:
+                    result = new MainMenuState();
+                    break;
                 case States.CREDIT:
                     result = new CreditState();
                     break;

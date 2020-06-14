@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class SplashState : State
-    {
-        public int Counter { get; set; }
-
+    {        
         public SplashState()
         {
             

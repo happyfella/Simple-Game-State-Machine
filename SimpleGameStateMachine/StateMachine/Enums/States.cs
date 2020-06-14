@@ -12,7 +12,8 @@ namespace SimpleGameStateMachine.StateMachine.Enums
         SPLASH = 1,
         GAME = 2,
         PAUSE = 3,
-        CREDIT = 4
+        MAINMENU = 4,
+        CREDIT = 5
 
     }
 }
