@@ -16,9 +16,12 @@ namespace SimpleGameStateMachine.StateMachine
 
         private States State { get; set; }
 
+        private readonly States initialState;
+
         public Machine()
         {
             Instance = this;
+            initialState = States.SPLASH;
 
         }
 
@@ -29,18 +32,22 @@ namespace SimpleGameStateMachine.StateMachine
 
         public void Process()  
         {
+            // Initial State Configuration
             if(State == States.UNDEFINED)
             {
-                State = States.SPLASH;
+                State = initialState;
             }
             ProcessStateEvent(State);
         }
 
         private bool ProcessStateEvent(States requestedState)
         {
-            // What happens when paused
-            // What happens when resumed
-                // If current state is paused and next state isn't paused, call close then resume;
+            // TODO:
+            // What happens when paused?
+            // What happens when resumed?
+                // If current state is paused and next state isn't paused, call close then resume.
+            // Think of a better solution instead of these groups of if statements. Are these steps
+                // able to be pre-defined?
             
             // Initial call when CurrentState object is null.
             if(CurrentState == null)
@@ -70,7 +77,6 @@ namespace SimpleGameStateMachine.StateMachine
                 Run();
                 return true;
             }
-            
         }
 
         private void Open()
@@ -89,12 +95,13 @@ namespace SimpleGameStateMachine.StateMachine
         private void Pause()
         {
             Console.WriteLine($"In State Machine Class : Pause");
+            // TODO: Process the pause event
         }
 
         private void Resume()
         {
             Console.WriteLine($"In State Machine Class : Resume");
-            CurrentState.Process();
+            // TODO: Process the resume event
         }
 
         private void Close()
