@@ -10,6 +10,8 @@ namespace SimpleGameStateMachine.StateMachine.Instances
     {
         public bool IsInitialized { get; set; }
 
+        public bool HasClosed { get; set; }
+
         public State()
         {
             
@@ -18,7 +20,9 @@ namespace SimpleGameStateMachine.StateMachine.Instances
         public virtual void Init()
         {
             Console.WriteLine($"{this.GetType().ToString()} : Init");
+
             IsInitialized = true;
+            HasClosed = false;
         }
 
         public virtual void Process()
@@ -31,9 +35,17 @@ namespace SimpleGameStateMachine.StateMachine.Instances
             Console.WriteLine($"{this.GetType().ToString()} : Update");
         }
 
+        public virtual void Render()
+        {
+            Console.WriteLine($"{this.GetType().ToString()} : Render");
+        }
+
         public virtual void Close()
         {
             Console.WriteLine($"{this.GetType().ToString()} : Close");
+
+            IsInitialized = false;
+            HasClosed = true;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleGameStateMachine.StateMachine.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,11 @@ namespace SimpleGameStateMachine.StateMachine.Instances
         public override void Update()
         {
             base.Update();
+        }
+
+        public override void Render()
+        {
+            base.Render();
         }
 
         public override void Close()

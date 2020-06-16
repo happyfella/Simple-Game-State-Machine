@@ -28,6 +28,11 @@ namespace SimpleGameStateMachine.StateMachine.Instances
             base.Update();
         }
 
+        public override void Render()
+        {
+            base.Render();
+        }
+
         public override void Close()
         {
             base.Close();

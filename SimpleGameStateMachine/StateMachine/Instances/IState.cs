@@ -14,6 +14,8 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 
         void Update();
 
+        void Render();
+
         void Close();
     }
 }
