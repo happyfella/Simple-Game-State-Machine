@@ -1,3 +1,0 @@
-﻿Implement Pause
-Implement Resume
-Refactor to async processing
