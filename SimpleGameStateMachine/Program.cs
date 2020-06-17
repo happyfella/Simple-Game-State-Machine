@@ -12,7 +12,7 @@ namespace SimpleGameStateMachine
     {
         static void Main(string[] args)
         {
-            var stateMachine = new Machine();
+            var stateMachine = new Machine(States.SPLASH);
             var quit = false;
 
             // Main Loop

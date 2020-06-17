@@ -8,7 +8,10 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class FailState : State
     {
-        public FailState(Machine context) : base(context) { }
+        public FailState(Machine context) : base(context)
+        {
+            StateIdentifier = Enums.States.UNDEFINED;
+        }
 
         public override void Init()
         {

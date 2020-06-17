@@ -1,4 +1,5 @@
-﻿using SimpleGameStateMachine.StateMachine.Instances;
+﻿using SimpleGameStateMachine.StateMachine.Enums;
+using SimpleGameStateMachine.StateMachine.Instances;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,10 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class MainMenuState : State
     {
-        public MainMenuState(Machine context) : base(context) { }
+        public MainMenuState(Machine context) : base(context)
+        {
+            StateIdentifier = States.MAINMENU;
+        }
 
         public override void Init()
         {

@@ -9,7 +9,10 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class SplashState : State
     {        
-        public SplashState(Machine context) : base(context) { }
+        public SplashState(Machine context) : base(context)
+        {
+            StateIdentifier = States.SPLASH;
+        }
 
         public override void Init()
         {

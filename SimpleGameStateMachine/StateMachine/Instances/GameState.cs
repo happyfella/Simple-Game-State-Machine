@@ -9,7 +9,10 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class GameState : State
     {
-        public GameState(Machine context) : base(context) { }
+        public GameState(Machine context) : base(context)
+        {
+            StateIdentifier = States.GAME;
+        }
 
         public override void Init()
         {

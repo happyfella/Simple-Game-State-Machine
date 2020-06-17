@@ -10,16 +10,13 @@ namespace SimpleGameStateMachine.StateMachine
 {
     public class Machine
     {
-        private State CurrentState { get; set; }
-
-        private States State { get; set; }
-
         private readonly States initialState;
 
-        public Machine()
-        {
-            initialState = States.SPLASH;
+        private State CurrentState { get; set; }
 
+        public Machine(States initialState)
+        {
+            this.initialState = initialState;
         }
 
         public void RequestStateChange(States requestedState)
@@ -30,11 +27,12 @@ namespace SimpleGameStateMachine.StateMachine
         public void Process()  
         {
             // Initial State Configuration
-            if(State == States.UNDEFINED)
+            if(CurrentState == null)
             {
-                State = initialState;
+                CurrentState = GetState(initialState);
             }
-            ProcessStateEvent(State);
+
+            ProcessStateEvent(CurrentState.StateIdentifier);
         }
 
         private bool ProcessStateEvent(States requestedState)
@@ -54,10 +52,9 @@ namespace SimpleGameStateMachine.StateMachine
             }
 
             // Incoming state doesn't equal the current state.
-            if(requestedState != State)
+            if(requestedState != CurrentState.StateIdentifier)
             {
                 Close();
-                State = requestedState;
                 CurrentState = GetState(requestedState);
                 return true;
             }
@@ -66,7 +63,6 @@ namespace SimpleGameStateMachine.StateMachine
             if(!CurrentState.IsInitialized)
             {
                 Open();
-                State = requestedState;
                 return true;
             }
             else

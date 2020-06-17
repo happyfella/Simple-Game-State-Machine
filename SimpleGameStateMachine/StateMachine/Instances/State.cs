@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleGameStateMachine.StateMachine.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace SimpleGameStateMachine.StateMachine.Instances
     {
         protected Machine Context { get; set; }
 
+        public States StateIdentifier { get; set; }
+
         public bool IsInitialized { get; set; }
 
         public bool CanClose { get; set; }
@@ -18,7 +21,8 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 
         public State(Machine context)
         {
-            this.Context = context;
+            Context = context;
+            StateIdentifier = States.UNDEFINED;
         }
 
         public virtual void Init()
