@@ -8,10 +8,7 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class FailState : State
     {
-        public FailState()
-        {
-
-        }
+        public FailState(Machine context) : base(context) { }
 
         public override void Init()
         {

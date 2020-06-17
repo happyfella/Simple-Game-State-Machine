@@ -10,8 +10,6 @@ namespace SimpleGameStateMachine.StateMachine
 {
     public class Machine
     {
-        public static Machine Instance { get; set; }
-
         private State CurrentState { get; set; }
 
         private States State { get; set; }
@@ -20,7 +18,6 @@ namespace SimpleGameStateMachine.StateMachine
 
         public Machine()
         {
-            Instance = this;
             initialState = States.SPLASH;
 
         }
@@ -116,22 +113,22 @@ namespace SimpleGameStateMachine.StateMachine
             switch(state)
             {
                 case States.SPLASH:
-                    result = new SplashState();
+                    result = new SplashState(this);
                     break;
                 case States.GAME:
-                    result = new GameState();
+                    result = new GameState(this);
                     break;
                 case States.PAUSE:
-                    result = new PauseState();
+                    result = new PauseState(this);
                     break;
                 case States.MAINMENU:
-                    result = new MainMenuState();
+                    result = new MainMenuState(this);
                     break;
                 case States.CREDIT:
-                    result = new CreditState();
+                    result = new CreditState(this);
                     break;
                 default:
-                    result = new FailState();
+                    result = new FailState(this);
                     break;
             }
             return result;

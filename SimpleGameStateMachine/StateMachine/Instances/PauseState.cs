@@ -9,10 +9,7 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class PauseState : State
     {
-        public PauseState()
-        {
-
-        }
+        public PauseState(Machine context) : base(context) { }
 
         public override void Init()
         {

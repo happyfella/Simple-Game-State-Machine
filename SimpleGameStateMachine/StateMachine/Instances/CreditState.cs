@@ -8,10 +8,7 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class CreditState : State
     {
-        public CreditState()
-        {
-
-        }
+        public CreditState(Machine context) : base(context) { }
 
         public override void Init()
         {

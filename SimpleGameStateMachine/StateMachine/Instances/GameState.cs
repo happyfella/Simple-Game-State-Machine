@@ -9,10 +9,7 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class GameState : State
     {
-        public GameState()
-        {
-
-        }
+        public GameState(Machine context) : base(context) { }
 
         public override void Init()
         {
@@ -29,7 +26,8 @@ namespace SimpleGameStateMachine.StateMachine.Instances
             if (Counter == 2)
             {
                 Console.ReadKey();
-                Machine.Instance.RequestStateChange(States.SPLASH);
+                this.Context.RequestStateChange(States.SPLASH);
+                //Machine.Instance.RequestStateChange(States.SPLASH);
                 //Machine.CurrentStateIdentifier = States.SPLASH;
                 Counter = 0;
             }

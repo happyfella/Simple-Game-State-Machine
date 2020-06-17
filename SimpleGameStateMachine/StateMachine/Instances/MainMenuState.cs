@@ -9,10 +9,7 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class MainMenuState : State
     {
-        public MainMenuState()
-        {
-
-        }
+        public MainMenuState(Machine context) : base(context) { }
 
         public override void Init()
         {
