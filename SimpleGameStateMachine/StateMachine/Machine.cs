@@ -14,16 +14,13 @@ namespace SimpleGameStateMachine.StateMachine
 
         private State CurrentState { get; set; }
 
+        private State PausedState { get; set; }
+
         private States StagedStateIdentifier { get; set; }
 
         public Machine(States initialState)
         {
             this.initialState = initialState;
-        }
-
-        public void RequestStateChange(States requestedState)
-        {
-            StagedStateIdentifier = requestedState;
         }
 
         public void Process()  
@@ -35,6 +32,11 @@ namespace SimpleGameStateMachine.StateMachine
             }
 
             ProcessStateEvent(CurrentState.StateIdentifier);
+        }
+
+        public void RequestStateChange(States requestedState)
+        {
+            StagedStateIdentifier = requestedState;
         }
 
         private void ProcessStateChange(States requestedState)
@@ -58,12 +60,25 @@ namespace SimpleGameStateMachine.StateMachine
                 
             }
 
+            // Handle Pause
+            if(requestedState == States.PAUSE && CurrentState.StateIdentifier != States.PAUSE)
+            {
+                PausedState = CurrentState;
+                CurrentState = GetState(requestedState);
+            }
+
+            // Handle Unpause
+            if(requestedState != CurrentState.StateIdentifier && CurrentState.StateIdentifier == States.PAUSE)
+            {
+                Close();
+                CurrentState = PausedState;
+            }
+
             // Incoming state doesn't equal the current state.
-            if(requestedState != CurrentState.StateIdentifier)
+            if(requestedState != CurrentState.StateIdentifier && requestedState != States.PAUSE)
             {
                 Close();
                 CurrentState = GetState(requestedState);
-                
             }
 
             // If the CurrentState hasn't executed Init yet.
@@ -101,18 +116,6 @@ namespace SimpleGameStateMachine.StateMachine
                 StagedStateIdentifier = States.UNDEFINED;
                 ProcessStateChange(nextState);
             }
-        }
-
-        private void Pause()
-        {
-            Console.WriteLine($"In State Machine Class : Pause");
-            // TODO: Process the pause event
-        }
-
-        private void Resume()
-        {
-            Console.WriteLine($"In State Machine Class : Resume");
-            // TODO: Process the resume event
         }
 
         private void Close()

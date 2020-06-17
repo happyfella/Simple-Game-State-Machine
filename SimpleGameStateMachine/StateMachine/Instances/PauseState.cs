@@ -19,9 +19,20 @@ namespace SimpleGameStateMachine.StateMachine.Instances
             base.Init();
         }
 
+        public int Counter { get; set; }
+
         public override void Process()
         {
             base.Process();
+
+
+            Counter++;
+            if (Counter == 2)
+            {
+                Console.ReadKey();
+                this.Context.RequestStateChange(States.GAME);
+                Counter = 0;
+            }
         }
 
         public override void Update()

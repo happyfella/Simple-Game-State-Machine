@@ -30,8 +30,6 @@ namespace SimpleGameStateMachine.StateMachine.Instances
             {
                 Console.ReadKey();
                 this.Context.RequestStateChange(States.SPLASH);
-                //Machine.Instance.RequestStateChange(States.SPLASH);
-                //Machine.CurrentStateIdentifier = States.SPLASH;
                 Counter = 0;
             }
         }

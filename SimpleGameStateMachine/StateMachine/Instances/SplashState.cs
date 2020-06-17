@@ -28,8 +28,6 @@ namespace SimpleGameStateMachine.StateMachine.Instances
             {
                 Console.ReadKey();
                 this.Context.RequestStateChange(States.GAME);
-                //Machine.Instance.RequestStateChange(States.GAME);
-                //Machine.CurrentStateIdentifier = States.GAME;
                 Counter = 0;
             }
         }
