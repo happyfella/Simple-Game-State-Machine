@@ -14,6 +14,8 @@ namespace SimpleGameStateMachine.StateMachine
 
         private State CurrentState { get; set; }
 
+        private States StagedStateIdentifier { get; set; }
+
         public Machine(States initialState)
         {
             this.initialState = initialState;
@@ -21,7 +23,7 @@ namespace SimpleGameStateMachine.StateMachine
 
         public void RequestStateChange(States requestedState)
         {
-            ProcessStateEvent(requestedState);
+            StagedStateIdentifier = requestedState;
         }
 
         public void Process()  
@@ -35,7 +37,12 @@ namespace SimpleGameStateMachine.StateMachine
             ProcessStateEvent(CurrentState.StateIdentifier);
         }
 
-        private bool ProcessStateEvent(States requestedState)
+        private void ProcessStateChange(States requestedState)
+        {
+            ProcessStateEvent(requestedState);
+        }
+
+        private void ProcessStateEvent(States requestedState)
         {
             // TODO:
             // What happens when paused?
@@ -48,7 +55,7 @@ namespace SimpleGameStateMachine.StateMachine
             if(CurrentState == null)
             {
                 CurrentState = GetState(requestedState);
-                return true;
+                
             }
 
             // Incoming state doesn't equal the current state.
@@ -56,33 +63,44 @@ namespace SimpleGameStateMachine.StateMachine
             {
                 Close();
                 CurrentState = GetState(requestedState);
-                return true;
+                
             }
 
             // If the CurrentState hasn't executed Init yet.
             if(!CurrentState.IsInitialized)
             {
                 Open();
-                return true;
+                
             }
             else
             {
                 Run();
-                return true;
+                
             }
         }
 
         private void Open()
         {
             Console.WriteLine($"In State Machine Class : Open");
+
             CurrentState.Init();
         }
 
         private void Run()
         {
             Console.WriteLine($"In State Machine Class : Run");
+
             CurrentState.Process();
             CurrentState.Update();
+            CurrentState.Render();
+
+            // Ensure all Run execution is processed before state change
+            if(StagedStateIdentifier != States.UNDEFINED)
+            {
+                var nextState = StagedStateIdentifier;
+                StagedStateIdentifier = States.UNDEFINED;
+                ProcessStateChange(nextState);
+            }
         }
 
         private void Pause()
@@ -100,6 +118,7 @@ namespace SimpleGameStateMachine.StateMachine
         private void Close()
         {
             Console.WriteLine($"In State Machine Class : Close");
+
             CurrentState.Close();
         }
 
