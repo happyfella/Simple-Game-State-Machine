@@ -9,9 +9,17 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class PauseState : State
     {
+        private readonly States pausedStateIdentifier;
+
         public PauseState(Machine context) : base(context)
         {
             StateIdentifier = States.PAUSE;
+        }
+
+        public PauseState(Machine context, States pausedStateIdentifier) : base(context)
+        {
+            StateIdentifier = States.PAUSE;
+            this.pausedStateIdentifier = pausedStateIdentifier;
         }
 
         public override void Init()
@@ -19,20 +27,9 @@ namespace SimpleGameStateMachine.StateMachine.Instances
             base.Init();
         }
 
-        public int Counter { get; set; }
-
         public override void Process()
         {
             base.Process();
-
-
-            Counter++;
-            if (Counter == 2)
-            {
-                Console.ReadKey();
-                this.Context.RequestStateChange(States.GAME);
-                Counter = 0;
-            }
         }
 
         public override void Update()

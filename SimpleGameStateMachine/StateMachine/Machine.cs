@@ -47,17 +47,13 @@ namespace SimpleGameStateMachine.StateMachine
         private void ProcessStateEvent(States requestedState)
         {
             // TODO:
-            // What happens when paused?
-            // What happens when resumed?
-                // If current state is paused and next state isn't paused, call close then resume.
             // Think of a better solution instead of these groups of if statements. Are these steps
                 // able to be pre-defined?
             
             // Initial call when CurrentState object is null.
             if(CurrentState == null)
             {
-                CurrentState = GetState(requestedState);
-                
+                CurrentState = GetState(requestedState);   
             }
 
             // Handle Pause
@@ -85,12 +81,10 @@ namespace SimpleGameStateMachine.StateMachine
             if(!CurrentState.IsInitialized)
             {
                 Open();
-                
             }
             else
             {
                 Run();
-                
             }
         }
 
@@ -137,7 +131,7 @@ namespace SimpleGameStateMachine.StateMachine
                     result = new GameState(this);
                     break;
                 case States.PAUSE:
-                    result = new PauseState(this);
+                    result = new PauseState(this, CurrentState.StateIdentifier);
                     break;
                 case States.MAINMENU:
                     result = new MainMenuState(this);
