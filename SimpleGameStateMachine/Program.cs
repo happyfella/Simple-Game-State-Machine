@@ -12,16 +12,8 @@ namespace SimpleGameStateMachine
     {
         static void Main(string[] args)
         {
-            var stateMachine = new Machine(States.SPLASH);
-            var quit = false;
-
-            // Main Loop
-            while(!quit)
-            {
-                stateMachine.Process();
-            }
-
-            Console.ReadLine();
+            var game = new Game();
+            game.Run();
         }
     }
 }
