@@ -46,16 +46,16 @@
     <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StateMachine\Instances\FailState.cs" />
-    <Compile Include="StateMachine\Instances\MainMenuState.cs" />
-    <Compile Include="StateMachine\Instances\PauseState.cs" />
-    <Compile Include="StateMachine\Machine.cs" />
-    <Compile Include="StateMachine\Enums\States.cs" />
-    <Compile Include="StateMachine\Instances\CreditState.cs" />
-    <Compile Include="StateMachine\Instances\GameState.cs" />
-    <Compile Include="StateMachine\Instances\IState.cs" />
-    <Compile Include="StateMachine\Instances\SplashState.cs" />
-    <Compile Include="StateMachine\Instances\State.cs" />
+    <Compile Include="GameStateMachine\Instances\FailState.cs" />
+    <Compile Include="GameStateMachine\Instances\MainMenuState.cs" />
+    <Compile Include="GameStateMachine\Instances\PauseState.cs" />
+    <Compile Include="GameStateMachine\GameStateMachine.cs" />
+    <Compile Include="GameStateMachine\Enums\States.cs" />
+    <Compile Include="GameStateMachine\Instances\CreditState.cs" />
+    <Compile Include="GameStateMachine\Instances\GameState.cs" />
+    <Compile Include="GameStateMachine\Instances\IState.cs" />
+    <Compile Include="GameStateMachine\Instances\SplashState.cs" />
+    <Compile Include="GameStateMachine\Instances\State.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

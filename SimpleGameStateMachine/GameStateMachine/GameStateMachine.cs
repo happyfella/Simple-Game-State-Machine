@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SimpleGameStateMachine.StateMachine
 {
-    public class Machine
+    public class GameStateMachine
     {
         private readonly States initialState;
 
@@ -18,7 +18,7 @@ namespace SimpleGameStateMachine.StateMachine
 
         private States StagedStateIdentifier { get; set; }
 
-        public Machine(States initialState)
+        public GameStateMachine(States initialState)
         {
             this.initialState = initialState;
         }
@@ -45,11 +45,7 @@ namespace SimpleGameStateMachine.StateMachine
         }
 
         private void ProcessStateEvent(States requestedState)
-        {
-            // TODO:
-            // Think of a better solution instead of these groups of if statements. Are these steps
-                // able to be pre-defined?
-            
+        {   
             // Initial call when CurrentState object is null.
             if(CurrentState == null)
             {

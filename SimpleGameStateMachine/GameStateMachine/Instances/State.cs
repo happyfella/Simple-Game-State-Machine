@@ -9,7 +9,7 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 {
     public class State : IState
     {
-        protected Machine Context { get; set; }
+        protected GameStateMachine Context { get; set; }
 
         public States StateIdentifier { get; set; }
 
@@ -17,7 +17,7 @@ namespace SimpleGameStateMachine.StateMachine.Instances
 
         public bool HasClosed { get; set; }
 
-        public State(Machine context)
+        public State(GameStateMachine context)
         {
             Context = context;
             StateIdentifier = States.UNDEFINED;

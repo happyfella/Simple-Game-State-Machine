@@ -17,7 +17,7 @@ namespace SimpleGameStateMachine
 
         public void Run()
         {
-            var stateMachine = new Machine(States.SPLASH);
+            var stateMachine = new GameStateMachine(States.SPLASH);
             var running = true;
 
             // Main Loop

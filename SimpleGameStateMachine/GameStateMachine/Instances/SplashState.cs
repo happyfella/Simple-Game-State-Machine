@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SimpleGameStateMachine.StateMachine.Instances
 {
-    public class GameState : State
-    {
-        public GameState(Machine context) : base(context)
+    public class SplashState : State
+    {        
+        public SplashState(GameStateMachine context) : base(context)
         {
-            StateIdentifier = States.GAME;
+            StateIdentifier = States.SPLASH;
         }
 
         public override void Init()

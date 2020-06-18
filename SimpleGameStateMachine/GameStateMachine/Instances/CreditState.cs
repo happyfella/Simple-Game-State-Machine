@@ -1,5 +1,4 @@
 ﻿using SimpleGameStateMachine.StateMachine.Enums;
-using SimpleGameStateMachine.StateMachine.Instances;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SimpleGameStateMachine.StateMachine.Instances
 {
-    public class MainMenuState : State
+    public class CreditState : State
     {
-        public MainMenuState(Machine context) : base(context)
+        public CreditState(GameStateMachine context) : base(context)
         {
-            StateIdentifier = States.MAINMENU;
+            StateIdentifier = States.CREDIT;
         }
 
         public override void Init()

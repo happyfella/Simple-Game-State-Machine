@@ -7,11 +7,19 @@ using System.Threading.Tasks;
 
 namespace SimpleGameStateMachine.StateMachine.Instances
 {
-    public class CreditState : State
+    public class PauseState : State
     {
-        public CreditState(Machine context) : base(context)
+        private readonly States pausedStateIdentifier;
+
+        public PauseState(GameStateMachine context) : base(context)
         {
-            StateIdentifier = States.CREDIT;
+            StateIdentifier = States.PAUSE;
+        }
+
+        public PauseState(GameStateMachine context, States pausedStateIdentifier) : base(context)
+        {
+            StateIdentifier = States.PAUSE;
+            this.pausedStateIdentifier = pausedStateIdentifier;
         }
 
         public override void Init()

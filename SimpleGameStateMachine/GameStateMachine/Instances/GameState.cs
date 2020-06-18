@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleGameStateMachine.StateMachine.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SimpleGameStateMachine.StateMachine.Instances
 {
-    public class FailState : State
+    public class GameState : State
     {
-        public FailState(Machine context) : base(context)
+        public GameState(GameStateMachine context) : base(context)
         {
-            StateIdentifier = Enums.States.UNDEFINED;
+            StateIdentifier = States.GAME;
         }
 
         public override void Init()

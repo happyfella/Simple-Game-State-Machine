@@ -1,4 +1,5 @@
 ﻿using SimpleGameStateMachine.StateMachine.Enums;
+using SimpleGameStateMachine.StateMachine.Instances;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SimpleGameStateMachine.StateMachine.Instances
 {
-    public class SplashState : State
-    {        
-        public SplashState(Machine context) : base(context)
+    public class MainMenuState : State
+    {
+        public MainMenuState(GameStateMachine context) : base(context)
         {
-            StateIdentifier = States.SPLASH;
+            StateIdentifier = States.MAINMENU;
         }
 
         public override void Init()
