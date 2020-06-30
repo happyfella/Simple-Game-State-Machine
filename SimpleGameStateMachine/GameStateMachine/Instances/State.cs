@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SimpleGameStateMachine.StateMachine.Instances
 {
-    public class State : IState
+    public abstract class State : IState
     {
         protected GameStateMachine Context { get; set; }
 
